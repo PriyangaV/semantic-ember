@@ -1,3 +1,53 @@
-<h2 id="title">Welcome to Ember</h2>
+<h2 {{action 'openModal' 'createFolder'}}>Create Folder</h2>
+{{#ui-modal id="createFolder" onApprove=(action 'createFolder') onDeny=(action 'denyModal')}}
+  <i class="close icon"></i>
+  <div class="header">
+  Create Folder
+  </div>
+
+  <div class="content">
+      {{input style="width:100px; height: 100px;" type="text" placeholder="Create folder..." id="username" name="username"}}
+  </div>
+
+  <div class="actions">
+    <div class="ui grey deny icon button" >
+      Cancel
+    </div>
+    <div class="ui positive icon button">
+      Create
+    </div>
+  </div>
+{{/ui-modal}}
+
+<h2 {{action 'openModal' 'confirm'}}>Confirm</h2>
+{{#ui-modal id="confirm" onApprove=(action 'approveModal') onDeny=(action 'denyModal')}}
+
+  <div class="content">
+      Are you sure want to move?
+  </div>
+
+  <div class="actions">
+    <div class="ui grey deny icon button" >
+      No
+    </div>
+    <div class="ui positive icon button">
+      Yes
+    </div>
+  </div>
+{{/ui-modal}}
+
+<h2 {{action 'openModal' 'alert'}}>Alert</h2>
+{{#ui-modal id="alert" onDeny=(action 'denyModal')}}
+
+  <div class="content">
+    You don't have permission to do this!
+  </div>
+
+  <div class="actions">
+    <div class="ui grey deny icon button" >
+      Ok
+    </div>
+  </div>
+{{/ui-modal}}
 
 {{outlet}}
