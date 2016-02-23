@@ -1,5 +1,5 @@
 <h2 {{action 'openModal' 'createFolder'}}>Create Folder</h2>
-{{#ui-modal id="createFolder" onApprove=(action 'createFolder') onDeny=(action 'denyModal')}}
+{{#ui-modal id="createFolder" name="createFolder" onApprove=(action 'createFolder') onDeny=(action 'denyModal')}}
   <i class="close icon"></i>
   <div class="header">
   Create Folder
@@ -23,7 +23,19 @@
 {{#ui-modal id="confirm" onApprove=(action 'approveModal') onDeny=(action 'denyModal')}}
 
   <div class="content">
-      Are you sure want to move?
+      <h4 {{action 'openModal' 'alert1'}}>Are you sure want to move?</h4>
+      {{#ui-modal id="alert1" onDeny=(action 'denyModal')}}
+
+        <div class="content">
+          You don't have permission to do this!
+        </div>
+
+        <div class="actions">
+          <div class="ui grey deny icon button" >
+            Ok
+          </div>
+        </div>
+      {{/ui-modal}}
   </div>
 
   <div class="actions">
